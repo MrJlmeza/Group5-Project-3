@@ -1,1 +1,1 @@
-FLASK_APP=grubHubDashboard/app.py flask run
+FLASK_APP=eagles_ml/app.py flask run
