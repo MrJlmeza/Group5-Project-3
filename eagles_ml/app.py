@@ -167,43 +167,43 @@ def home():
     return render_template("form.html")
 
 
-@app.route("/api/eagles_ml/<photo>")
-def eaglesml_get(photo):
-    credentials = getCredentials()
-    # bucket='bucket'
-    textsDictionary = detect_text(photo, credentials)
-    celebDictionary = detect_celebrities(photo, credentials)  
+@app.route("/api/eagles_ml/BrandonGraham1")
+def eaglesml_get():
+    # credentials = getCredentials()
+    # photo = photo + '.JPG'
+    # # bucket='bucket'
+    # textsDictionary = detect_text(photo, credentials)
+    # celebDictionary = detect_celebrities(photo, credentials)  
 
-    #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
-    #corresponds to it
+    # #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
+    # #corresponds to it
 
-    results = db.session.query(Eagles_ML.playername, 
-                               Eagles_ML.playernumber,
-                               Eagles_ML.position,
-                               Eagles_ML.height,
-                               Eagles_ML.weight,
-                               Eagles_ML.age,
-                               Eagles_ML.experience,
-                               Eagles_ML.college,
-                               Eagles_ML.year).all()
+    # results = db.session.query(Eagles_ML.playername, 
+    #                            Eagles_ML.playernumber,
+    #                            Eagles_ML.position,
+    #                            Eagles_ML.height,
+    #                            Eagles_ML.weight,
+    #                            Eagles_ML.age,
+    #                            Eagles_ML.experience,
+    #                            Eagles_ML.college,
+    #                            Eagles_ML.year).all()
 
     eagles_ml_data = []
-   
-    for playername, playernumber, position, height, weight, age, experience, college, year in results:
-        data_dict = {}
-        data_dict["playername"] = playername
-        data_dict["playernumber"] = playernumber
-        data_dict["position"] = position
-        data_dict["height"] = height
-        data_dict["weight"] = weight
-        data_dict["age"] = age
-        data_dict["experience"] = experience
-        data_dict["college"] = college
-        data_dict["year"] = year
-        eagles_ml_data.append(data_dict)
+    eagles_ml_data.append("Holy Shit")
+    # for playername, playernumber, position, height, weight, age, experience, college, year in results:
+    #     data_dict = {}
+    #     data_dict["playername"] = playername
+    #     data_dict["playernumber"] = playernumber
+    #     data_dict["position"] = position
+    #     data_dict["height"] = height
+    #     data_dict["weight"] = weight
+    #     data_dict["age"] = age
+    #     data_dict["experience"] = experience
+    #     data_dict["college"] = college
+    #     data_dict["year"] = year
+    #     eagles_ml_data.append(data_dict)
 
     return jsonify(eagles_ml_data)
-
 
 
 if __name__ == "__main__":
