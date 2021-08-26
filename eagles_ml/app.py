@@ -7,6 +7,8 @@ from flask import (
     jsonify,
     request,
     redirect)
+import csv
+import boto3
 
 #################################################
 # Flask Setup
@@ -27,8 +29,84 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from .models import Eagles_ML
+def getCredentials():
+    with open('credentials.csv','r') as input:
+        next(input)
+        reader = csv.reader(input)
+        for line in reader:
+            access_key_id = line[2]
+            secret_access_key = line[3]
 
+    return access_key_id, secret_access_key
+
+def detect_text(photo, credentials):
+   
+    access_key_id = credentials[0]
+    secret_access_key = credentials[1]
+    
+    with open(photo, 'rb') as source_image: 
+        source_bytes = source_image.read()
+    
+    client=boto3.client('rekognition',
+                    aws_access_key_id = access_key_id,
+                    aws_secret_access_key = secret_access_key,
+                    region_name='us-east-1')
+
+    response=client.detect_text(Image = {'Bytes' : source_bytes})
+                        
+    textDetections=response['TextDetections']
+    listofDetectedStrings = []
+    confidence = []
+    for text in textDetections:
+            listofDetectedStrings.append(text['DetectedText'])
+            confidence.append(text['Confidence'])
+
+    #Create a dictionary of texts detected and confidences
+    resultDictionary = {listofDetectedStrings[i]: confidence[i] for i in range(len(listofDetectedStrings))}
+
+    final_result = {}
+
+    #Remove duplicate keys
+    for key,value in resultDictionary.items():
+        if key not in final_result.keys():
+            final_result[key] = value
+
+    return final_result
+
+def detect_celebrities(photo, credentials):
+
+    access_key_id = credentials[0]
+    secret_access_key = credentials[1]
+    
+    client=boto3.client('rekognition',
+                    aws_access_key_id = access_key_id,
+                    aws_secret_access_key = secret_access_key,
+                    region_name='us-east-1')
+
+    with open(photo, 'rb') as image:
+        response = client.recognize_celebrities(Image={'Bytes': image.read()})
+
+    print('Detected faces for ' + photo) 
+    listOfCelebs = []
+    confidenceList = []
+    for celebrity in response['CelebrityFaces']:
+        listOfCelebs.append(celebrity['Name'])
+        confidenceList.append(celebrity['Face']['Confidence'])
+
+    #Create a dictionary of celebs and confidences
+    resultDictionary = {listOfCelebs[i]: confidenceList[i] for i in range(len(listOfCelebs))}
+
+    final_result = {}
+
+    #Remove duplicate keys
+    for key,value in resultDictionary.items():
+        if key not in final_result.keys():
+            final_result[key] = value
+
+    return final_result
+
+
+from .models import Eagles_ML
 
 # create route that renders index.html template
 @app.route("/")
@@ -89,8 +167,16 @@ def home():
     return render_template("form.html")
 
 
-@app.route("/api/eagles_ml")
-def eaglesml_get():
+@app.route("/api/eagles_ml/<photo>")
+def eaglesml_get(photo):
+    credentials = getCredentials()
+    # bucket='bucket'
+    textsDictionary = detect_text(photo, credentials)
+    celebDictionary = detect_celebrities(photo, credentials)  
+
+    #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
+    #corresponds to it
+
     results = db.session.query(Eagles_ML.playername, 
                                Eagles_ML.playernumber,
                                Eagles_ML.position,
@@ -122,3 +208,4 @@ def eaglesml_get():
 
 if __name__ == "__main__":
     app.run()
+    

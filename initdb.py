@@ -1,3 +1,3 @@
-from grubHubDashboard.app import db
+from eagles_ml.app import db
 
 db.create_all()

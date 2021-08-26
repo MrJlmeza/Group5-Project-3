@@ -1,1 +1,1 @@
-web: gunicorn grubHubDashboard.app:app
+web: gunicorn eagles_ml.app:app
