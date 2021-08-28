@@ -129,13 +129,14 @@ def getFinalResult(photo):
                                Eagles_ML.year).all()
 
     credentials = getCredentials()
-    # photo = './eagles_ml/static/assets/BrandonGraham1.JPG'
     textsDictionary = detect_text(photo, credentials)
     celebDictionary = detect_celebrities(photo, credentials)  
 
     eagles_ml_data = []
     final_result = []
     
+    final_result.append(textsDictionary)
+    final_result.append(celebDictionary)
     for playername, playernumber, position, height, weight, age, experience, college, year in results:
         data_dict = {}
     
@@ -156,26 +157,38 @@ def getFinalResult(photo):
             if(str(database["playernumber"]) == key_detected):
                 final_result.append(eagles_ml_data[i])
         i=i+1
+
         
     return jsonify(final_result)
 
 
 @app.route("/api/eagles_ml/BrandonGraham1")
-def getBrandonGraham1():
+def get_BrandonGraham1():
     return getFinalResult('./eagles_ml/static/assets/BrandonGraham1.JPG')
 
 @app.route("/api/eagles_ml/BrandonGraham_55_skewed")
-def getBrandonGraham_55_skewed():
+def get_BrandonGraham_55_skewed():
     return getFinalResult('./eagles_ml/static/assets/BrandonGraham_55_skewed.JPG')
 
 @app.route("/api/eagles_ml/MilesSanders_numberClear2")
-def getMilesSanders_numberClear2():
+def get_MilesSanders_numberClear2():
     return getFinalResult('./eagles_ml/static/assets/MilesSanders_numberClear2.JPG')
 
+@app.route("/api/eagles_ml/MilesSanders_numberClear")
+def get_MilesSanders_numberClear():
+    return getFinalResult('./eagles_ml/static/assets/MilesSanders_numberClear.JPG')
+
 @app.route("/api/eagles_ml/MilesSanders_multiPlayers")
-def getMilesSanders_multiPlayers():
+def get_MilesSanders_multiPlayers():
     return getFinalResult('./eagles_ml/static/assets/MilesSanders_multiPlayers1.JPG')
 
+@app.route("/api/eagles_ml/BrianDawkins_helmetOff2")
+def get_BrianDawkins_helmetOff2():
+    return getFinalResult('./eagles_ml/static/assets/BrianDawkins_helmetOff2.JPG')
+
+@app.route("/api/eagles_ml/BrianDawkins_helmetOn")
+def get_BrianDawkins_helmetOn():
+    return getFinalResult('./eagles_ml/static/assets/BrianDawkins_helmetOn.JPG')
 
 if __name__ == "__main__":
     app.run()

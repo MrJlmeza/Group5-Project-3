@@ -1,0 +1,8 @@
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+
+.players img {
+    width:100%;
+    height: 230px;
+}
