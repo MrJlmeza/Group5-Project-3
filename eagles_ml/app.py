@@ -30,13 +30,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 def getCredentials():
-    with open('credentials.csv','r') as input:
-        next(input)
-        reader = csv.reader(input)
-        for line in reader:
-            access_key_id = line[2]
-            secret_access_key = line[3]
-
+    # with open('credentials.csv','r') as input:
+    #     next(input)
+    #     reader = csv.reader(input)
+    #     for line in reader:
+    #         access_key_id = line[2]
+    #         secret_access_key = line[3]
+    access_key_id = 'AKIAVJ5OLQ4M2EFG5LKH'
+    secret_access_key = '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'
     return access_key_id, secret_access_key
 
 def detect_text(photo, credentials):
@@ -169,29 +170,45 @@ def home():
 
 @app.route("/api/eagles_ml/BrandonGraham1")
 def eaglesml_get():
-    # credentials = getCredentials()
-    # photo = photo + '.JPG'
-    # # bucket='bucket'
-    # textsDictionary = detect_text(photo, credentials)
-    # celebDictionary = detect_celebrities(photo, credentials)  
+    results = db.session.query(Eagles_ML.playername, 
+                               Eagles_ML.playernumber,
+                               Eagles_ML.position,
+                               Eagles_ML.height,
+                               Eagles_ML.weight,
+                               Eagles_ML.age,
+                               Eagles_ML.experience,
+                               Eagles_ML.college,
+                               Eagles_ML.year).all()
 
-    # #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
-    # #corresponds to it
-
-    # results = db.session.query(Eagles_ML.playername, 
-    #                            Eagles_ML.playernumber,
-    #                            Eagles_ML.position,
-    #                            Eagles_ML.height,
-    #                            Eagles_ML.weight,
-    #                            Eagles_ML.age,
-    #                            Eagles_ML.experience,
-    #                            Eagles_ML.college,
-    #                            Eagles_ML.year).all()
+    credentials = getCredentials()
+    photo = 'http://127.0.0.1:5000/static/assets/BrandonGraham1.JPG'
+    textsDictionary = detect_text(photo, credentials)
+    celebDictionary = detect_celebrities(photo, credentials)  
 
     eagles_ml_data = []
-    eagles_ml_data.append("Holy Shit")
+    for key,value in textsDictionary.items():
+        data_dict = {}
+        data_dict[key] = value
+        eagles_ml_data.append(data_dict)
+    return jsonify(eagles_ml_data)
+
+    #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
+    #corresponds to it
+    # for key,value in textsDictionary.items():
+    #     if key in results.j
+    #         final_result[key] = value
+
+
+    
+
+    # eagles_ml_data = []
+    # eagles_ml_data.append("Holy Shit")
     # for playername, playernumber, position, height, weight, age, experience, college, year in results:
     #     data_dict = {}
+    
+    #     for key,value in textsDictionary.items():
+    #         if key == 
+
     #     data_dict["playername"] = playername
     #     data_dict["playernumber"] = playernumber
     #     data_dict["position"] = position
@@ -203,7 +220,7 @@ def eaglesml_get():
     #     data_dict["year"] = year
     #     eagles_ml_data.append(data_dict)
 
-    return jsonify(eagles_ml_data)
+    # return jsonify(eagles_ml_data)
 
 
 if __name__ == "__main__":

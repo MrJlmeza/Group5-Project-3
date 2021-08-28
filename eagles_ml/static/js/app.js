@@ -152,11 +152,23 @@
       
 // }
 
+// @app.route("/api/v1.0/justice-league/real_name/<real_name>")
+// def justice_league_by_real_name(real_name):
 
 function BrandonGraham1Clicked() {
-  const url = "/api/eagles_ml/BrandonGraham1";
-  d3.json(url).then(function(response) {
-    console.log(response)
+  // const url = "/api/eagles_ml/BrandonGraham1"
+  // d3.json(url).then(function(response) {
+  //   console.log(response)
 
-  });
+  // });
+
+  Tesseract.recognize(
+    'http://127.0.0.1:5000/static/assets/BrandonGraham1.JPG',
+    'eng',
+    { logger: m => console.log(m) }
+      ).then(({ data: { text } }) => {
+    console.log(text);
+  })
+
+
 }
