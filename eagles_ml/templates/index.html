@@ -1,67 +1,96 @@
+
+  
 <html lang="en-us">
 
 <head>
 
   <meta charset="UTF-8">
   <title>Eagles Player Recognition</title>
-  
+
   <script src="../static/js/app.js"></script>
   <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
-
   <!-- Bring in our bootstrap and css stylesheet -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Load main stylesheet-->
   <link href="../static/css/style.css" rel="stylesheet" />
+ 
 </head>
 <body>
-  
 
-  <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
-      <a href="../index.html" class="navbar-brand d-flex w-50 mr-auto">Eagles Player Recognition</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              <li class="nav-item">
-                  <a class="nav-link" href="url">link</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="url">link</a>
-              </li>
-          </ul>
-      </div>
-  </nav>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box players">
-          <button onclick="BrandonGraham1Clicked()"><img src="../static/assets/BrandonGraham1.JPG"></button>
-        </div> 
-      </div>
-
-      <div class="col-md-6">
-        <div class="box players">
-          <button onclick="BrandonGraham_55_skewedClicked()"><img src="../static/assets/BrandonGraham_55_skewed.JPG"></button>
-        </div> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box players">
-          <button onclick="MilesSanders_numberClear2Clicked()"><img src="../static/assets/MilesSanders_numberClear2.JPG"></button>
-        </div> 
-      </div>
-
-      <div class="col-md-6">
-        <div class="box players">
-          <button onclick="MilesSanders_multiPlayersClicked()"><img src="../static/assets/MilesSanders_multiPlayers.JPG"></button>
-        </div> 
-      </div>
-    </div>
+  <div class="grid">
+    <label for="pic-1" class="grid-item"><img src="../static/assets/BrianDawkins_helmetOn.jpg"></label>
+    <label for="pic-2" class="grid-item"><img src="../static/assets/MilesSanders_multiPlayers.JPG"></label>
+    <label for="pic-3" class="grid-item"><img src="../static/assets/MilesSanders_numberClear2.jpg"></label>
+    <label for="pic-4" class="grid-item"><img src="../static/assets/BrandonGraham_55_skewed.JPG"></label>
+    <label for="pic-5" class="grid-item"><img src="../static/assets/BrianDawkins_helmetOff2.jpg"></label>
+    <label for="pic-6" class="grid-item"><img src="../static/assets/MilesSanders_numberClear.jpg"></label>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+<input type="checkbox" id="pic-1">
+<label for="pic-1" class="lightbox"><button onclick="BrianDawkins_helmetOn_clicked()"><img src="../static/assets/BrianDawkins_helmetOn.JPG"></button>
+  <div class="text-block">
+  <h4>Player</h4>
+  <p>Jersey #:<br>
+  Height:<br>
+  Weight:<br>
+  College:<br>
+  Confidence:
+  </p>
+</div></label>
+<input type="checkbox" id="pic-2">
+<label for="pic-2" class="lightbox"><button onclick="MilesSanders_multiPlayers_clicked()"><img src="../static/assets/MilesSanders_multiPlayers.JPG"></button>
+  <div class="text-block">
+    <h4>Player</h4>
+    <p>Jersey #:<br>
+    Height:<br>
+    Weight:<br>
+    College:<br>
+    Confidence:
+    </p></div></label>
+<input type="checkbox" id="pic-3">
+<label for="pic-3" class="lightbox"><button onclick="MilesSanders_numberClear2_clicked()"><img src="../static/assets/MilesSanders_numberClear2.JPG"></button>
+  <div class="text-block">
+    <h4>Player</h4>
+    <p>Jersey #:<br>
+    Height:<br>
+    Weight:<br>
+    College:<br>
+    Confidence:
+    </p></div></label>
+
+
+<input type="checkbox" id="pic-4">
+<label for="pic-4" class="lightbox"><button onclick="BrandonGraham_55_skewed_clicked()"><img src="../static/assets/BrandonGraham_55_skewed.JPG"></button>
+  <div class="text-block">
+    <h4>Player</h4>
+    <p>Jersey #:<br>
+    Height:<br>
+    Weight:<br>
+    College:<br>
+    Confidence:
+    </p></div></label>
+<input type="checkbox" id="pic-5">
+<label for="pic-5" class="lightbox"><button onclick="BrianDawkins_helmetOff2_clicked()"><img src="../static/assets/BrianDawkins_helmetOff2.JPG"></button>
+  <div class="text-block">
+    <h4>Player</h4>
+    <p>Jersey #:<br>
+    Height:<br>
+    Weight:<br>
+    College:<br>
+    Confidence:
+    </p></div></label>
+<input type="checkbox" id="pic-6">
+<label for="pic-6" class="lightbox"><button onclick="MilesSanders_numberClear_clicked()"><img src="../static/assets/MilesSanders_numberClear.JPG"></button>
+  <div class="text-block">
+    <h4>Player</h4>
+    <p>Jersey #:<br>
+    Height:<br>
+    Weight:<br>
+    College:<br>
+    Confidence:
+    </p></div></label>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
 </body>
-</html>               
+</html>   
