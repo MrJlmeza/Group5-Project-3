@@ -181,7 +181,7 @@ def eaglesml_get():
                                Eagles_ML.year).all()
 
     credentials = getCredentials()
-    photo = 'http://127.0.0.1:5000/static/assets/BrandonGraham1.JPG'
+    photo = 'BrandonGraham1.JPG'
     textsDictionary = detect_text(photo, credentials)
     celebDictionary = detect_celebrities(photo, credentials)  
 
@@ -202,7 +202,7 @@ def eaglesml_get():
     
 
     # eagles_ml_data = []
-    # eagles_ml_data.append("Holy Shit")
+    
     # for playername, playernumber, position, height, weight, age, experience, college, year in results:
     #     data_dict = {}
     
