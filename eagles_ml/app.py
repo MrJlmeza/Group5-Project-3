@@ -1,4 +1,5 @@
 # import necessary libraries
+from re import I
 import numpy as np
 import os
 from flask import (
@@ -10,6 +11,7 @@ from flask import (
     send_from_directory)
 import csv
 import boto3
+from sqlalchemy.sql.expression import true
 
 #################################################
 # Flask Setup
@@ -31,14 +33,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 def getCredentials():
-    # with open('credentials.csv','r') as input:
-    #     next(input)
-    #     reader = csv.reader(input)
-    #     for line in reader:
-    #         access_key_id = line[2]
-    #         secret_access_key = line[3]
-    access_key_id = 'AKIAVJ5OLQ4M2EFG5LKH'
-    secret_access_key = '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'
+    with open('./eagles_ml/static/credentials.csv','r') as input:
+        next(input)
+        reader = csv.reader(input)
+        for line in reader:
+            access_key_id = line[2]
+            secret_access_key = line[3]
+    access_key_id = access_key_id
+    secret_access_key = secret_access_key
     return access_key_id, secret_access_key
 
 def detect_text(photo, credentials):
@@ -115,62 +117,7 @@ from .models import Eagles_ML
 def home():
     return render_template("index.html")
 
-
-# # Query the database and send the jsonified results
-# @app.route("/send", methods=["GET", "POST"])
-# def send():
-    if request.method == "POST":
-        date = request.form["date"]
-        establishment = request.form["establishment"]
-        total = request.form["total"]
-        tip = request.form["tip"]
-        grubhub = request.form["grubhub"]
-        timePay = request.form["timePay"]
-        mileagePay = request.form["mileagePay"]
-        miles = request.form["miles"]
-        bonus = request.form["bonus"]
-        acceptedAt = request.form["acceptedAt"]
-        streetName = request.form["streetName"]
-        city = request.form["city"]
-        zip = request.form["zip"]
-        canceled = request.form["canceled"]
-        popUp = request.form["popUp"]
-        type = request.form["type"]
-        lat = request.form["lat"]
-        long = request.form["long"]
-        rating = request.form["rating"]
-
-        eagles_ml = Eagles_ML(
-            date = date,
-            establishment = establishment,
-            total = total,
-            tip = tip,
-            grubhub = grubhub,
-            timePay = timePay,
-            mileagePay = mileagePay,
-            miles = miles,
-            bonus = bonus,
-            acceptedAt = acceptedAt,
-            streetName = streetName,
-            city = city,
-            zip = zip,
-            canceled = canceled,
-            popUp = popUp,
-            type = type,
-            lat = lat,
-            long = long,
-            rating = rating
-        )
-
-        db.session.add(eagles_ml)
-        db.session.commit()
-        return redirect("/", code=302)
-
-    return render_template("form.html")
-
-
-@app.route("/api/eagles_ml/BrandonGraham1")
-def eaglesml_get():
+def getFinalResult(photo):
     results = db.session.query(Eagles_ML.playername, 
                                Eagles_ML.playernumber,
                                Eagles_ML.position,
@@ -181,50 +128,53 @@ def eaglesml_get():
                                Eagles_ML.college,
                                Eagles_ML.year).all()
 
-    # path = os.getcwd()
-    # print(path)
     credentials = getCredentials()
-    photo = './eagles_ml/static/assets/BrandonGraham1.JPG'
+    # photo = './eagles_ml/static/assets/BrandonGraham1.JPG'
     textsDictionary = detect_text(photo, credentials)
     celebDictionary = detect_celebrities(photo, credentials)  
 
     eagles_ml_data = []
-    for key,value in textsDictionary.items():
+    final_result = []
+    
+    for playername, playernumber, position, height, weight, age, experience, college, year in results:
         data_dict = {}
-        data_dict[key] = value
+    
+        data_dict["playername"] = playername
+        data_dict["playernumber"] = playernumber
+        data_dict["position"] = position
+        data_dict["height"] = height
+        data_dict["weight"] = weight
+        data_dict["age"] = age
+        data_dict["experience"] = experience
+        data_dict["college"] = college
+        data_dict["year"] = year
         eagles_ml_data.append(data_dict)
-    print(eagles_ml_data)
-    return jsonify(eagles_ml_data)
 
-    #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 
-    #corresponds to it
-    # for key,value in textsDictionary.items():
-    #     if key in results.j
-    #         final_result[key] = value
+    i = 0
+    for database in eagles_ml_data:
+        for key_detected,value in textsDictionary.items():
+            if(str(database["playernumber"]) == key_detected):
+                final_result.append(eagles_ml_data[i])
+        i=i+1
+        
+    return jsonify(final_result)
 
 
-    
+@app.route("/api/eagles_ml/BrandonGraham1")
+def getBrandonGraham1():
+    return getFinalResult('./eagles_ml/static/assets/BrandonGraham1.JPG')
 
-    # eagles_ml_data = []
-    
-    # for playername, playernumber, position, height, weight, age, experience, college, year in results:
-    #     data_dict = {}
-    
-    #     for key,value in textsDictionary.items():
-    #         if key == 
+@app.route("/api/eagles_ml/BrandonGraham_55_skewed")
+def getBrandonGraham_55_skewed():
+    return getFinalResult('./eagles_ml/static/assets/BrandonGraham_55_skewed.JPG')
 
-    #     data_dict["playername"] = playername
-    #     data_dict["playernumber"] = playernumber
-    #     data_dict["position"] = position
-    #     data_dict["height"] = height
-    #     data_dict["weight"] = weight
-    #     data_dict["age"] = age
-    #     data_dict["experience"] = experience
-    #     data_dict["college"] = college
-    #     data_dict["year"] = year
-    #     eagles_ml_data.append(data_dict)
+@app.route("/api/eagles_ml/MilesSanders_numberClear2")
+def getMilesSanders_numberClear2():
+    return getFinalResult('./eagles_ml/static/assets/MilesSanders_numberClear2.JPG')
 
-    # return jsonify(eagles_ml_data)
+@app.route("/api/eagles_ml/MilesSanders_multiPlayers")
+def getMilesSanders_multiPlayers():
+    return getFinalResult('./eagles_ml/static/assets/MilesSanders_multiPlayers1.JPG')
 
 
 if __name__ == "__main__":
