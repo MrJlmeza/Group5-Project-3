@@ -6,7 +6,8 @@ from flask import (
     render_template,
     jsonify,
     request,
-    redirect)
+    redirect,
+    send_from_directory)
 import csv
 import boto3
 
@@ -180,8 +181,10 @@ def eaglesml_get():
                                Eagles_ML.college,
                                Eagles_ML.year).all()
 
+    # path = os.getcwd()
+    # print(path)
     credentials = getCredentials()
-    photo = 'BrandonGraham1.JPG'
+    photo = './eagles_ml/static/assets/BrandonGraham1.JPG'
     textsDictionary = detect_text(photo, credentials)
     celebDictionary = detect_celebrities(photo, credentials)  
 
@@ -190,6 +193,7 @@ def eaglesml_get():
         data_dict = {}
         data_dict[key] = value
         eagles_ml_data.append(data_dict)
+    print(eagles_ml_data)
     return jsonify(eagles_ml_data)
 
     #For each key in player textsDictionary, and textsDictionary, go to the database and find the player row that 

@@ -49,7 +49,7 @@ def detect_text(photo, bucket):
 
 def main():
     bucket='bucket'
-    photo='images/BrandonGraham_multiPlayers.JPG'
+    photo='static/assets/BrandonGraham_multiPlayers.JPG'
     text_count=detect_text(photo,bucket)
     print("Text detected: " + str(text_count))
 
