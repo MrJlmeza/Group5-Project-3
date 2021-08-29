@@ -162,33 +162,68 @@ def getFinalResult(photo):
     return jsonify(final_result)
 
 
-@app.route("/api/eagles_ml/BrandonGraham1")
-def get_BrandonGraham1():
-    return getFinalResult('./eagles_ml/static/assets/BrandonGraham1.JPG')
+@app.route("/api/eagles_ml/TestImages1")
+def get_TestImages1():
+    return getFinalResult('./eagles_ml/static/assets/TestImages1.jpg')
 
-@app.route("/api/eagles_ml/BrandonGraham_55_skewed")
-def get_BrandonGraham_55_skewed():
-    return getFinalResult('./eagles_ml/static/assets/BrandonGraham_55_skewed.JPG')
+@app.route("/api/eagles_ml/TestImages2")
+def get_TestImages2():
+    return getFinalResult('./eagles_ml/static/assets/TestImages2.jpg')
 
-@app.route("/api/eagles_ml/MilesSanders_numberClear2")
-def get_MilesSanders_numberClear2():
-    return getFinalResult('./eagles_ml/static/assets/MilesSanders_numberClear2.JPG')
+@app.route("/api/eagles_ml/TestImages3")
+def get_TestImages3():
+    return getFinalResult('./eagles_ml/static/assets/TestImages3.jpg')
 
-@app.route("/api/eagles_ml/MilesSanders_numberClear")
-def get_MilesSanders_numberClear():
-    return getFinalResult('./eagles_ml/static/assets/MilesSanders_numberClear.JPG')
+@app.route("/api/eagles_ml/TestImages4")
+def get_TestImages4():
+    return getFinalResult('./eagles_ml/static/assets/TestImages4.jpg')
 
-@app.route("/api/eagles_ml/MilesSanders_multiPlayers")
-def get_MilesSanders_multiPlayers():
-    return getFinalResult('./eagles_ml/static/assets/MilesSanders_multiPlayers1.JPG')
+@app.route("/api/eagles_ml/TestImages5")
+def get_TestImages5():
+    return getFinalResult('./eagles_ml/static/assets/TestImages5.jpg')
 
-@app.route("/api/eagles_ml/BrianDawkins_helmetOff2")
-def get_BrianDawkins_helmetOff2():
-    return getFinalResult('./eagles_ml/static/assets/BrianDawkins_helmetOff2.JPG')
+@app.route("/api/eagles_ml/TestImages6")
+def get_TestImages6():
+    return getFinalResult('./eagles_ml/static/assets/TestImages6.jpg')
 
-@app.route("/api/eagles_ml/BrianDawkins_helmetOn")
-def get_BrianDawkins_helmetOn():
-    return getFinalResult('./eagles_ml/static/assets/BrianDawkins_helmetOn.JPG')
+@app.route("/api/eagles_ml/TestImages7")
+def get_TestImages7():
+    return getFinalResult('./eagles_ml/static/assets/TestImages7.jpg')
+
+@app.route("/api/eagles_ml/TestImages8")
+def get_TestImages8():
+    return getFinalResult('./eagles_ml/static/assets/TestImages8.jpg')
+
+@app.route("/api/eagles_ml/TestImages9")
+def get_TestImages9():
+    return getFinalResult('./eagles_ml/static/assets/TestImages9.jpg')
+
+@app.route("/api/eagles_ml/TestImages10")
+def get_TestImages10():
+    return getFinalResult('./eagles_ml/static/assets/TestImages10.jpg')
+
+@app.route("/api/eagles_ml/TestImages11")
+def get_TestImages11():
+    return getFinalResult('./eagles_ml/static/assets/TestImages11.jpg')
+
+@app.route("/api/eagles_ml/TestImages12")
+def get_TestImages12():
+    return getFinalResult('./eagles_ml/static/assets/TestImages12.jpg')
+
+@app.route("/api/eagles_ml/TestImages13")
+def get_TestImages13():
+    return getFinalResult('./eagles_ml/static/assets/TestImages13.jpg')
+
+@app.route("/api/eagles_ml/TestImages14")
+def get_TestImages14():
+    return getFinalResult('./eagles_ml/static/assets/TestImages14.jpg')
+
+@app.route("/api/eagles_ml/TestImages15")
+def get_TestImages15():
+    return getFinalResult('./eagles_ml/static/assets/TestImages15.jpg')
+
+
+
 
 if __name__ == "__main__":
     app.run()

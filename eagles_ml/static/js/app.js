@@ -9,69 +9,108 @@ function GetTessaractOCR()
     })
 }
 
-
-function BrandonGraham1_clicked() {
-  const url = "/api/eagles_ml/BrandonGraham1"
-  d3.json(url).then(function(response) {
-    console.log(response)
-
-  });
-  // photo = 'BrandonGraham1'
-  // GetTessaractOCR(photo);
-
-}
-
-function BrandonGraham_55_skewed_clicked() {
-  const url = "/api/eagles_ml/BrandonGraham_55_skewed"
-  d3.json(url).then(function(response) {
-    console.log(response)
-
-  });
-  // photo = 'BrandonGraham_55_skewed'
-  // GetTessaractOCR(photo);
-}
-
-function MilesSanders_numberClear2_clicked() {
-  const url = "/api/eagles_ml/MilesSanders_numberClear2"
+function TestImages1_clicked() {
+  const url = "/api/eagles_ml/TestImages1"
   d3.json(url).then(function(response) {
     console.log(response)
   });
-  // photo = 'MilesSanders_numberClear2'
-  // GetTessaractOCR(photo);
 }
 
-function MilesSanders_numberClear_clicked() {
-  const url = "/api/eagles_ml/MilesSanders_numberClear"
+function TestImages2_clicked() {
+  const url = "/api/eagles_ml/TestImages2"
   d3.json(url).then(function(response) {
     console.log(response)
   });
-  // photo = 'MilesSanders_numberClear2'
-  // GetTessaractOCR(photo);
 }
 
-function MilesSanders_multiPlayers_clicked(){
-  const url = "/api/eagles_ml/MilesSanders_multiPlayers"
+function TestImages3_clicked() {
+  const url = "/api/eagles_ml/TestImages3"
   d3.json(url).then(function(response) {
     console.log(response)
   });
-  // photo = 'MilesSanders_multiPlayers'
-  // GetTessaractOCR(photo);
 }
 
-function BrianDawkins_helmetOff2_clicked(){
-  const url = "/api/eagles_ml/BrianDawkins_helmetOff2"
+function TestImages4_clicked() {
+  const url = "/api/eagles_ml/TestImages4"
   d3.json(url).then(function(response) {
     console.log(response)
   });
-  // photo = 'MilesSanders_multiPlayers'
-  // GetTessaractOCR(photo);
 }
 
-function BrianDawkins_helmetOn_clicked(){
-  const url = "/api/eagles_ml/BrianDawkins_helmetOn"
+function TestImages5_clicked() {
+  const url = "/api/eagles_ml/TestImages5"
   d3.json(url).then(function(response) {
     console.log(response)
   });
-  // photo = 'MilesSanders_multiPlayers'
-  // GetTessaractOCR(photo);
 }
+
+function TestImages6_clicked() {
+  const url = "/api/eagles_ml/TestImages6"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages7_clicked() {
+  const url = "/api/eagles_ml/TestImages7"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages8_clicked() {
+  const url = "/api/eagles_ml/TestImages8"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages9_clicked() {
+  const url = "/api/eagles_ml/TestImages9"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages10_clicked() {
+  const url = "/api/eagles_ml/TestImages10"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages11_clicked() {
+  const url = "/api/eagles_ml/TestImages11"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages12_clicked() {
+  const url = "/api/eagles_ml/TestImages12"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages13_clicked() {
+  const url = "/api/eagles_ml/TestImages13"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages14_clicked() {
+  const url = "/api/eagles_ml/TestImages14"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
+function TestImages15_clicked() {
+  const url = "/api/eagles_ml/TestImages15"
+  d3.json(url).then(function(response) {
+    console.log(response)
+  });
+}
+
