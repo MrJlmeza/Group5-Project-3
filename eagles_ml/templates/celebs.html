@@ -1,0 +1,160 @@
+
+  
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Eagles Celebrities</title>
+
+  <script src="../static/js/app_celeb.js"></script>
+  <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
+  <!-- Bring in our bootstrap and css stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Load main stylesheet-->
+  <link href="../static/css/style.css" rel="stylesheet" />
+ 
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Squad 5 - Eagles Asset Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Player Detection <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="celebs.html">Celebrity Detection</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="grid">
+          <label for="pic-1" class="grid-item"><img src="../static/assets/celebs/Celebs1.jpg"></label>
+          <label for="pic-2" class="grid-item"><img src="../static/assets/celebs/Celebs2.jpg"></label>
+          <label for="pic-3" class="grid-item"><img src="../static/assets/celebs/Celebs3.jpg"></label>
+          <label for="pic-4" class="grid-item"><img src="../static/assets/celebs/Celebs4.jpg"></label>
+          <label for="pic-5" class="grid-item"><img src="../static/assets/celebs/Celebs5.jpg"></label>
+          <label for="pic-6" class="grid-item"><img src="../static/assets/celebs/Celebs6.jpg"></label>
+          <label for="pic-7" class="grid-item"><img src="../static/assets/celebs/Celebs7.jpg"></label>
+          <label for="pic-8" class="grid-item"><img src="../static/assets/celebs/Celebs8.jpg"></label>
+          <label for="pic-9" class="grid-item"><img src="../static/assets/celebs/Celebs9.jpg"></label>
+          <label for="pic-10" class="grid-item"><img src="../static/assets/celebs/Celebs10.jpg"></label>
+          <label for="pic-11" class="grid-item"><img src="../static/assets/celebs/Celebs11.jpg"></label>
+          <label for="pic-12" class="grid-item"><img src="../static/assets/celebs/Celebs12.jpg"></label>
+      
+        </div>
+      
+        <div>
+            <input type="checkbox" id="pic-1">
+            <label for="pic-1" class="lightbox"><button onclick="Celebs1_clicked()"><img src="../static/assets/celebs/Celebs1.JPG"></button>
+            <div class="text-block">
+            <h4>Celebrity</h4>
+            <p>Name:
+            </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-2">
+            <label for="pic-2" class="lightbox"><button onclick="Celebs2_clicked()"><img src="../static/assets/celebs/Celebs2.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-3">
+            <label for="pic-3" class="lightbox"><button onclick="Celebs3_clicked()"><img src="../static/assets/celebs/Celebs3.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-4">
+            <label for="pic-4" class="lightbox"><button onclick="Celebs4_clicked()"><img src="../static/assets/celebs/Celebs4.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-5">
+            <label for="pic-5" class="lightbox"><button onclick="Celebs5_clicked()"><img src="../static/assets/celebs/Celebs5.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-6">
+            <label for="pic-6" class="lightbox"><button onclick="Celebs6_clicked()"><img src="../static/assets/celebs/Celebs6.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-7">
+            <label for="pic-7" class="lightbox"><button onclick="Celebs7_clicked()"><img src="../static/assets/celebs/Celebs7.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-8">
+            <label for="pic-8" class="lightbox"><button onclick="Celebs8_clicked()"><img src="../static/assets/celebs/Celebs8.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-9">
+            <label for="pic-9" class="lightbox"><button onclick="Celebs9_clicked()"><img src="../static/assets/celebs/Celebs9.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-10">
+            <label for="pic-10" class="lightbox"><button onclick="Celebs10_clicked()"><img src="../static/assets/celebs/Celebs10.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-11">
+            <label for="pic-11" class="lightbox"><button onclick="Celebs11_clicked()"><img src="../static/assets/celebs/Celebs11.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+      
+            <input type="checkbox" id="pic-12">
+            <label for="pic-12" class="lightbox"><button onclick="Celebs12_clicked()"><img src="../static/assets/celebs/Celebs12.JPG"></button>
+              <div class="text-block">
+              <h4>Celebrity</h4>
+              <p>Name:
+              </p>
+            </div></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+</body>
+</html>   
