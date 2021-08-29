@@ -120,7 +120,7 @@ def home():
 def getFinalResult(photo):
     results = db.session.query(Eagles_ML.playername, 
                                Eagles_ML.playernumber,
-                               Eagles_ML.position,
+                               Eagles_ML.playerposition,
                                Eagles_ML.height,
                                Eagles_ML.weight,
                                Eagles_ML.age,
@@ -137,12 +137,12 @@ def getFinalResult(photo):
     
     final_result.append(textsDictionary)
     final_result.append(celebDictionary)
-    for playername, playernumber, position, height, weight, age, experience, college, year in results:
+    for playername, playernumber, playerposition, height, weight, age, experience, college, year in results:
         data_dict = {}
     
         data_dict["playername"] = playername
         data_dict["playernumber"] = playernumber
-        data_dict["position"] = position
+        data_dict["playerposition"] = playerposition
         data_dict["height"] = height
         data_dict["weight"] = weight
         data_dict["age"] = age
