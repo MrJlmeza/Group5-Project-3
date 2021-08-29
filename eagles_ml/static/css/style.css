@@ -45,7 +45,7 @@ label[for] { cursor: pointer; }
   width: 25%;
   display: inline-block;
   padding: 16px;
-  opacity: .75;
+  opacity: .1;
   -webkit-transition: opacity .5s;
   transition: opacity .5s;
 }
