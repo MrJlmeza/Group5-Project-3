@@ -161,6 +161,20 @@ def getFinalResult(photo):
         
     return jsonify(final_result)
 
+def getCelebResult(photo):
+    credentials = getCredentials()
+    celebDictionary = detect_celebrities(photo, credentials)  
+    final_result = []
+    final_result.append(celebDictionary)
+    return jsonify(final_result)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/celebs', methods=['GET', 'POST'])
+def cool_form():
+    return render_template('celebs.html')
 
 @app.route("/api/eagles_ml/TestImages1")
 def get_TestImages1():
@@ -222,8 +236,66 @@ def get_TestImages14():
 def get_TestImages15():
     return getFinalResult('./eagles_ml/static/assets/TestImages15.jpg')
 
+############### CELBRITY DETECTION ###############
 
 
+@app.route("/api/eagles_ml/Celebs1")
+def get_Celebs1():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs1.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs2")
+def get_Celebs2():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs2.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs3")
+def get_Celebs3():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs3.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs4")
+def get_Celebs4():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs4.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs5")
+def get_Celebs5():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs5.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs6")
+def get_Celebs6():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs6.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs7")
+def get_Celebs7():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs7.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs8")
+def get_Celebs8():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs8.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs9")
+def get_Celebs9():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs9.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs10")
+def get_Celebs10():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs10.jpg')
+
+
+@app.route("/api/eagles_ml/Celebs11")
+def get_Celebs11():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs11.jpg')
+
+@app.route("/api/eagles_ml/Celebs12")
+def get_Celebs12():
+    return getCelebResult('./eagles_ml/static/assets/celebs/Celebs12.jpg')
 
 if __name__ == "__main__":
     app.run()
