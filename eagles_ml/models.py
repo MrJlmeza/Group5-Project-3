@@ -6,7 +6,7 @@ class Eagles_ML(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     playername = db.Column(db.String(150))
     playernumber = db.Column(db.Integer)
-    position = db.Column(db.String(5))
+    playerposition = db.Column(db.String(5))
     height = db.Column(db.Float)
     weight = db.Column(db.Float)
     age = db.Column(db.Integer)
