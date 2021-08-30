@@ -132,14 +132,13 @@ def getFinalResult(photo):
     textsDictionary = detect_text(photo, credentials)
     celebDictionary = detect_celebrities(photo, credentials)  
 
-    eagles_ml_data = []
+    eagles_ml_database = []
     final_result = []
     
     final_result.append(textsDictionary)
     final_result.append(celebDictionary)
     for playername, playernumber, playerposition, height, weight, age, experience, college, year in results:
         data_dict = {}
-    
         data_dict["playername"] = playername
         data_dict["playernumber"] = playernumber
         data_dict["playerposition"] = playerposition
@@ -149,16 +148,17 @@ def getFinalResult(photo):
         data_dict["experience"] = experience
         data_dict["college"] = college
         data_dict["year"] = year
-        eagles_ml_data.append(data_dict)
+        eagles_ml_database.append(data_dict)
 
     i = 0
-    for database in eagles_ml_data:
+    filteredPlayerList = []
+    for databaseEntry in eagles_ml_database:
         for key_detected,value in textsDictionary.items():
-            if(str(database["playernumber"]) == key_detected):
-                final_result.append(eagles_ml_data[i])
+            if(str(databaseEntry["playernumber"]) == key_detected):
+                filteredPlayerList.append(eagles_ml_database[i])
         i=i+1
 
-        
+    final_result.append(filteredPlayerList)    
     return jsonify(final_result)
 
 def getCelebResult(photo):
