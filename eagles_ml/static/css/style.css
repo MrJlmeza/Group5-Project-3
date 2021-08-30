@@ -45,9 +45,9 @@ label[for] { cursor: pointer; }
   width: 25%;
   display: inline-block;
   padding: 16px;
-  opacity: .1;
+  /* opacity: .1;
   -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  transition: opacity .5s; */
 }
 
 .grid .grid-item:hover { opacity: 1; }
@@ -68,6 +68,12 @@ label[for] { cursor: pointer; }
   max-width: 100%;
   max-height: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  filter: grayscale(100%);
+}
+
+.grid img:hover {
+  filter: grayscale(0%);
+  transition: .5s;
 }
 
 input[type="checkbox"] { display: none; }
@@ -83,24 +89,31 @@ input[type="checkbox"] { display: none; }
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
-  -webkit-transition: -webkit-transform .75s ease-out;
-  transition: transform .75s ease-out;
+  -webkit-transition: -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out;
+  background-color: rgba(0, 0, 0, 0.90);
+  filter:blur(3);
 }
 
 .lightbox img {
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  max-width: 96%;
-  max-height: 96%;
+  max-width: 900px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   display: inline-flex;
   flex-direction: column;
   text-decoration: none;
   }
+
+@media only screen and (max-width: 782px) {
+  .lightbox img {
+    width: 100%;
+    }
+}
 
 input[type="checkbox"]:checked + .lightbox {
   -webkit-transform: scale(1);
@@ -112,10 +125,33 @@ input[type="checkbox"]:checked ~ .grid { opacity: .125; }
 
 .text-block {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 0;
+  right: 0;
   background-color: black;
   color: white;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin: 0;
+  filter: drop-shadow(-2px -4px 18px black);
+  -webkit-filter: drop-shadow(-2px -4px 18px black);
+  width: 100%;
+  height: 250px;
+}
+
+nav {
+  z-index: 9999;
+  filter: drop-shadow(2px 4px 18px black);
+  -webkit-filter: drop-shadow(2px 4px 18px black);
+
+}
+
+.navbar {
+  background-color: black !important;
+}
+.tags {
+  font-family: 'Courier New', monospace;
+}
+
+.text-block .row {
+  text-align: center;
 }
